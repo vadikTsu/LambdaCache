@@ -24,10 +24,9 @@ class UniqueSumbolCounterCasheTest {
     void countChars_shouldReturnEmplyMapObject_WhenBlankStringQuery() {
         String text = "";
 
-        Map<Character, Integer> charCounts = charCounter.countChars(text);
+        Map<Character, Integer> expected = charCounter.countChars(text);
         
-
-        Assertions.assertTrue(charCounts.isEmpty());
+        Assertions.assertTrue(expected.isEmpty());
     }
 
     @Test
