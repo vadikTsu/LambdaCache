@@ -1,4 +1,4 @@
-/* Client is a simple Java class that demonstrates the usage of the
+/* Main is a simple Java class that demonstrates the usage of the
  * CharCounter application to count character occurrences in multiple input
  * query strings.
  */
