@@ -44,7 +44,6 @@ class UniqueSumbolCounterTest {
         Map<Character, Integer> actual = characterCounter.countChars(query);
         expected.put(' ', 5);
 
-        
         Assertions.assertEquals(expected, actual);
     }
     
@@ -54,7 +53,6 @@ class UniqueSumbolCounterTest {
         
         Map<Character, Integer> actual = characterCounter.countChars(text);
         
-        
         expected.put('!', 1);
         expected.put('@', 1);
         expected.put('#', 1);
@@ -63,7 +61,6 @@ class UniqueSumbolCounterTest {
         expected.put('^', 1);
         expected.put('*', 1);
         expected.put('(', 1);
-        
         
         Assertions.assertEquals(expected, actual);
     }
