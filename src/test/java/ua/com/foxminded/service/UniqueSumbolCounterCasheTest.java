@@ -12,12 +12,12 @@ class UniqueSumbolCounterCasheTest {
 
     @BeforeEach
     void setUp() {
-        charCounter = new UniqueSymbolOccuranceCashe(new UniqueSymbolCounter());
+        charCounter = new CharCounterCache(new UniqueCharCounter());
     }
 
     @Test
     void testConstructor_shouldReturnNullPointerException_NullInput() {
-        Assertions.assertThrows(NullPointerException.class, () -> new UniqueSymbolOccuranceCashe(null));
+        Assertions.assertThrows(NullPointerException.class, () -> new CharCounterCache(null));
     }
 
     @Test

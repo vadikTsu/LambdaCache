@@ -11,12 +11,10 @@ import org.junit.jupiter.api.Test;
 class UniqueSumbolCounterTest {
 
     private CharCounter characterCounter;
-    private Map<Character, Integer> expected;
     
     @BeforeEach
     void beforeEach() {
-        characterCounter = new UniqueSymbolCounter();
-        expected = new HashMap<>();
+        characterCounter = new UniqueCharCounter();
     }
 
     @Test
@@ -24,7 +22,7 @@ class UniqueSumbolCounterTest {
         String text = "hello world";
 
         Map<Character, Integer> actual = characterCounter.countChars(text);
-        
+        Map<Character, Integer> expected = new HashMap<>();
         expected.put('l', 3);
         expected.put('e', 1);
         expected.put(' ', 1);
@@ -42,6 +40,8 @@ class UniqueSumbolCounterTest {
         String query = "     ";
         
         Map<Character, Integer> actual = characterCounter.countChars(query);
+        Map<Character, Integer> expected = new HashMap<>();
+
         expected.put(' ', 5);
 
         Assertions.assertEquals(expected, actual);
@@ -51,8 +51,9 @@ class UniqueSumbolCounterTest {
     void countChars_shouldReturnMapOpjectWithCharOccurnce_WhenNonAlphabeticStringQuery() {
         String text = "!@#$%^*(";
         
-        Map<Character, Integer> actual = characterCounter.countChars(text);
-        
+        Map<Character, Integer> actual = characterCounter.countChars(text);        
+        Map<Character, Integer> expected = new HashMap<>();
+
         expected.put('!', 1);
         expected.put('@', 1);
         expected.put('#', 1);

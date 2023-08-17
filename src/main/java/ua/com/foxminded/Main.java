@@ -4,26 +4,24 @@
  */
 package ua.com.foxminded;
 
-import ua.com.foxminded.service.UniqueSymbolOccuranceCashe;
+import ua.com.foxminded.service.CharCounterCache;
 import ua.com.foxminded.service.CharCounter;
-import ua.com.foxminded.service.UniqueSymbolCounter;
+import ua.com.foxminded.service.UniqueCharCounter;
 
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        CharCounter charCounter = new UniqueSymbolOccuranceCashe(new UniqueSymbolCounter());
+        CharCounter charCounter = new CharCounterCache(new UniqueCharCounter());
         try (Scanner scanner = new Scanner(System.in)) {
-            while (true) {
-                String text = scanner.nextLine();
-                if (text.isEmpty()) {  
-                    break;
-                }
+            String text = scanner.nextLine();
+            while (!text.isEmpty()) {
                 charCounter.countChars(text).forEach((key, value) -> System.out.println(key + " :: " + value));
+                text = scanner.nextLine();
             }
         } catch (Exception exception) {
-            exception.getMessage();
+            System.out.println(exception.getMessage());
         }
     }
 }

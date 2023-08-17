@@ -1,14 +1,15 @@
 package ua.com.foxminded.service;
 
 import java.util.Map;
-import java.util.stream.Collectors;
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.summingInt;
 
 /**
- * UniqueSymbolCounter is a class that implements the CharOperator interface. It
+ * UniqueSymbolCounter is a class that implements the CharCounter interface. It
  * provides functionality to count the occurrences of each character in a given
  * query string.
  */
-public class UniqueSymbolCounter implements CharCounter {
+public class UniqueCharCounter implements CharCounter {
 
     /**
      * Counts the occurrences of each character in the input text string.
@@ -21,6 +22,6 @@ public class UniqueSymbolCounter implements CharCounter {
     public Map<Character, Integer> countChars(String text) {
         return text.chars()
                 .mapToObj(ch -> (char) ch)
-                .collect(Collectors.groupingBy(ch -> ch, Collectors.summingInt(ch -> 1)));
+                .collect(groupingBy(ch -> ch, summingInt(ch -> 1)));
     }
 }
