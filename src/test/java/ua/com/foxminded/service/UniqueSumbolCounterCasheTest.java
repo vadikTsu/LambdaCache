@@ -2,7 +2,8 @@ package ua.com.foxminded.service;
 
 import java.util.Map;
 
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +18,7 @@ class UniqueSumbolCounterCasheTest {
 
     @Test
     void testConstructor_shouldReturnNullPointerException_NullInput() {
-        Assertions.assertThrows(NullPointerException.class, () -> new CharCounterCache(null));
+        assertThrows(NullPointerException.class, () -> new CharCounterCache(null));
     }
 
     @Test
@@ -25,14 +26,12 @@ class UniqueSumbolCounterCasheTest {
         String text = "";
 
         Map<Character, Integer> expected = charCounter.countChars(text);
-        
-        Assertions.assertTrue(expected.isEmpty());
+
+        assertTrue(expected.isEmpty());
     }
 
     @Test
     void countChars_shouldReturnNullPointerException_WhenNullQuery() {
-
-        Assertions.assertThrows(NullPointerException.class, () -> charCounter.countChars(null));
+        assertThrows(NullPointerException.class, () -> charCounter.countChars(null));
     }
 }
-

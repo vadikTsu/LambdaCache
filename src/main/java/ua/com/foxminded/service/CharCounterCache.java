@@ -20,7 +20,7 @@ public class CharCounterCache implements CharCounter {
 
     /**
      * Counts the occurrences of each character in the input text string. If the
-     * query has been processed before, the result is retrieved from the cache to
+     * text has been processed before, the result is retrieved from the cache to
      * avoid redundant calculations.
      *
      * @param text the input string to be processed.
@@ -31,7 +31,7 @@ public class CharCounterCache implements CharCounter {
     public Map<Character, Integer> countChars(String text) {
         cache.putIfAbsent(text, charCounter.countChars(text));
         return cache.get(text);
-        
+
     }
 
 }
