@@ -4,11 +4,11 @@
  */
 package ua.com.foxminded;
 
-import ua.com.foxminded.service.CharCounterCache;
-import ua.com.foxminded.service.CharCounter;
-import ua.com.foxminded.service.UniqueCharCounter;
-
 import java.util.Scanner;
+
+import ua.com.foxminded.charcounter.CharCounter;
+import ua.com.foxminded.charcounter.CharCounterCache;
+import ua.com.foxminded.charcounter.UniqueCharCounter;
 
 public class Main {
 

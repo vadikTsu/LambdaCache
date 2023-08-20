@@ -1,13 +1,13 @@
-package ua.com.foxminded.service;
+package ua.com.foxminded.charcounter;
 
 import java.util.HashMap;
 
 import java.util.Map;
 
 /**
- * CharCounterCache is a class that implements the CharCounter interface as a
- * decorator for the UniqueCharCounter class. It provides caching functionality
- * to avoid redundant calculations when counting character occurrences.
+ * CharCounterCache is a class that implements the CharCounter interface. It
+ * provides caching functionality to avoid redundant calculations when counting
+ * character occurrences.
  */
 public class CharCounterCache implements CharCounter {
 
@@ -29,9 +29,9 @@ public class CharCounterCache implements CharCounter {
      */
     @Override
     public Map<Character, Integer> countChars(String text) {
-        cache.putIfAbsent(text, charCounter.countChars(text));
-        return cache.get(text);
 
+        return cache.computeIfAbsent(text, t -> charCounter.countChars(t));
+        
     }
 
 }

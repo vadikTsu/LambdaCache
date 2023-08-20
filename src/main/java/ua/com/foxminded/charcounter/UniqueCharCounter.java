@@ -1,8 +1,10 @@
-package ua.com.foxminded.service;
+package ua.com.foxminded.charcounter;
 
 import java.util.Map;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.summingInt;
+
+import java.util.LinkedHashMap;
 
 /**
  * UniqueSymbolCounter is a class that implements the CharCounter interface. It
@@ -20,6 +22,6 @@ public class UniqueCharCounter implements CharCounter {
      */
     @Override
     public Map<Character, Integer> countChars(String text) {
-        return text.chars().mapToObj(ch -> (char) ch).collect(groupingBy(ch -> ch, summingInt(ch -> 1)));
+        return text.chars().mapToObj(ch -> (char) ch).collect(groupingBy(ch -> ch, LinkedHashMap::new, summingInt(ch -> 1)));
     }
 }

@@ -1,26 +1,27 @@
 package ua.com.foxminded.service;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ua.com.foxminded.charcounter.UniqueCharCounter;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class UniqueSumbolCounterTest {
+class UniqueCharCounterTest {
 
-    private CharCounter characterCounter;
+    private UniqueCharCounter  charCounter;
 
     @BeforeEach
     void beforeEach() {
-        characterCounter = new UniqueCharCounter();
+        charCounter = new UniqueCharCounter();
     }
 
     @Test
     void countChars_shouldReturnMapOpjectWithCharOccurnce_WhenRegularStringQuery() {
         String text = "hello world";
 
-        Map<Character, Integer> actual = characterCounter.countChars(text);
+        Map<Character, Integer> actual = charCounter.countChars(text);
         Map<Character, Integer> expected = new HashMap<>();
         expected.put('l', 3);
         expected.put('e', 1);
@@ -38,7 +39,7 @@ class UniqueSumbolCounterTest {
     void countChars_shouldReturnMapOpjectWithCharOccurnce_WhenWhiteSpacesStringQuery() {
         String query = "     ";
 
-        Map<Character, Integer> actual = characterCounter.countChars(query);
+        Map<Character, Integer> actual = charCounter.countChars(query);
         Map<Character, Integer> expected = new HashMap<>();
 
         expected.put(' ', 5);
@@ -50,7 +51,7 @@ class UniqueSumbolCounterTest {
     void countChars_shouldReturnMapOpjectWithCharOccurnce_WhenNonAlphabeticStringQuery() {
         String text = "!@#$%^*(";
 
-        Map<Character, Integer> actual = characterCounter.countChars(text);
+        Map<Character, Integer> actual = charCounter.countChars(text);
         Map<Character, Integer> expected = new HashMap<>();
 
         expected.put('!', 1);
@@ -69,9 +70,9 @@ class UniqueSumbolCounterTest {
     void countChars_shouldReturnEmplyMapOpject_WhenBlankStringQuery() {
         String text = "";
 
-        Map<Character, Integer> charCounts = characterCounter.countChars(text);
+        Map<Character, Integer> charCounts = charCounter.countChars(text);
 
-        assertTrue(charCounts.isEmpty());
+        assertEquals(charCounts, Collections.emptyMap());
     }
 
 }
