@@ -29,9 +29,6 @@ public class CharCounterCache implements CharCounter {
      */
     @Override
     public Map<Character, Integer> countChars(String text) {
-
         return cache.computeIfAbsent(text, t -> charCounter.countChars(t));
-        
     }
-
 }

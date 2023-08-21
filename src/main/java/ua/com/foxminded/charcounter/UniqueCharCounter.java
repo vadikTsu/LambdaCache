@@ -22,6 +22,7 @@ public class UniqueCharCounter implements CharCounter {
      */
     @Override
     public Map<Character, Integer> countChars(String text) {
-        return text.chars().mapToObj(ch -> (char) ch).collect(groupingBy(ch -> ch, LinkedHashMap::new, summingInt(ch -> 1)));
+        return text.chars().mapToObj(ch -> (char) ch)
+                .collect(groupingBy(ch -> ch, LinkedHashMap::new, summingInt(ch -> 1)));
     }
 }

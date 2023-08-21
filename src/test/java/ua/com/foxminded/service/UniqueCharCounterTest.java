@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class UniqueCharCounterTest {
 
-    private UniqueCharCounter  charCounter;
+    private UniqueCharCounter charCounter;
 
     @BeforeEach
     void beforeEach() {
@@ -18,7 +18,7 @@ class UniqueCharCounterTest {
     }
 
     @Test
-    void countChars_shouldReturnMapOpjectWithCharOccurnce_WhenRegularStringQuery() {
+    void countChars_shouldReturnUniqueCharOccurnceCollectedToHashMap_WhenRegularStringText() {
         String text = "hello world";
 
         Map<Character, Integer> actual = charCounter.countChars(text);
@@ -36,7 +36,7 @@ class UniqueCharCounterTest {
     }
 
     @Test
-    void countChars_shouldReturnMapOpjectWithCharOccurnce_WhenWhiteSpacesStringQuery() {
+    void countChars_shouldReturnUniqueCharOccurnceCollectedToHashMap_WhenWhiteSpacesStringText() {
         String query = "     ";
 
         Map<Character, Integer> actual = charCounter.countChars(query);
@@ -48,7 +48,7 @@ class UniqueCharCounterTest {
     }
 
     @Test
-    void countChars_shouldReturnMapOpjectWithCharOccurnce_WhenNonAlphabeticStringQuery() {
+    void countChars_shouldReturnUniqueCharOccurnceCollectedToHashMap_WhenNonAlphabeticStringText() {
         String text = "!@#$%^*(";
 
         Map<Character, Integer> actual = charCounter.countChars(text);
@@ -67,7 +67,24 @@ class UniqueCharCounterTest {
     }
 
     @Test
-    void countChars_shouldReturnEmplyMapOpject_WhenBlankStringQuery() {
+    void countChars_shouldReturnUniqueCharOccurnceCollectedToHashMap_WhenUpperAndLowerCaseStringText() {
+        String text = "AaaBbbCCcc";
+
+        Map<Character, Integer> actual = charCounter.countChars(text);
+        Map<Character, Integer> expected = new HashMap<>();
+
+        expected.put('A', 1);
+        expected.put('B', 1);
+        expected.put('C', 2);
+        expected.put('a', 2);
+        expected.put('b', 2);
+        expected.put('c', 2);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void countChars_shouldReturnEmplyHashMapObject_WhenBlankStringText() {
         String text = "";
 
         Map<Character, Integer> charCounts = charCounter.countChars(text);
